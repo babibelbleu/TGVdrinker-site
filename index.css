@@ -1,5 +1,7 @@
 body{
     font-family: Raleway Flex,Raleway-Fallback,Apple Color Emoji,Noto Color Emoji,sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 a{
@@ -219,10 +221,11 @@ main{
 footer{
     position: fixed;
     bottom: 0;
-    height: 5rem;
+    height: 7rem;
     width: 100%;
     background-color: skyblue;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
