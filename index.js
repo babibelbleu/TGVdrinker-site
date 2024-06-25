@@ -1,4 +1,10 @@
-var articles = document.getElementsByClassName('article');
+window.addEventListener('load', (event) => {
+    var articles = localStorage.getItem('articles');
+    if(articles !== null){
+        articles = JSON.parse(articles);
+        incrementNbArticles(articles.length);
+    }
+});
 
 function scrollToElement(element){
     var el = document.getElementById(element);
@@ -30,11 +36,34 @@ function showErrorPopup() {
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
 
-function incrementNbArticles(){
+function incrementNbArticles(n){
     var nbArticlesEl = document.getElementById('nb-article');
     var nbArticles = parseInt(nbArticlesEl.innerText);
-    nbArticles++;
+    nbArticles += n;
     nbArticlesEl.innerText = nbArticles;
-    showValidPopup();
+}
+
+function addAndIncrementArticle(id){
+
+    if(addArticle(id)){
+        incrementNbArticles(1);
+        showValidPopup();
+    } else {
+        showErrorPopup();
+    }
+}
+
+function addArticle(id){
+    var articles = localStorage.getItem('articles');
+    var newArticles = [];
+
+    if(articles !== null){
+        articles = JSON.parse(articles);
+        newArticles = articles;
+    }
+
+    newArticles.push(id);
+    localStorage.setItem('articles', JSON.stringify(newArticles));
+    return true;
 }
   
