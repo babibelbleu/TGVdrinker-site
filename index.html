@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,35 +9,52 @@
 <body>
     <header>
         <nav>
+            <div>
+                <img src="images/logo.jpg" alt="Logo du projet">
+                <h2>TGVdrinker</h2>
+            </div>
             <ul class="navbar">
-                <li><img src="" alt="Logo du projet"></li>
-                <li>Articles</li>
-                <li>Qui sommes nous ?</li>
-                <li>Contact</li>
-                <li>Mentions légales</li>
+                <li class="active-link"><a href="#">Accueil</a></li>
+                <li><a onclick="scrollToElement('articles');">Articles</a></li>
+                <li><a href="#">Panier</a><span id="nb-article">0</span></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class="presentation">
             <h1>Le nouveau produit phare des boîtes de nuit</h1>
-            <div class="button shadowed">Découvrez</div>
+            <div class="button shadowed" onclick="scrollToElement('whoarewe')">Découvrez</div>
         </section>
-        <section class="articles">
+        <section class="articles" id="articles">
             <div class="article">
-                <img src="" alt="Article 1">
-                <div class="button">Ajouter au panier</div>
+                <span class="title">Verre "Le Whisky"</span>
+                <img src="/images/article-1.jpeg" alt="Article 1">
+                <span class="price">10,99€</span>
+                <div class="button" onclick="incrementNbArticles();">Ajouter au panier</div>
             </div>
             <div class="article">
-                <img src="" alt="Article 2">
-                <div class="button">Ajouter au panier</div>
+                <span class="title">Shot "Le Mortel"</span>
+                <img src="/images/article-2.jpeg" alt="Article 2">
+                <span class="price sold-out">ÉPUISÉ</span>
+                <div class="button" onclick="incrementNbArticles();">Ajouter au panier</div>
             </div>
-            <div class="article">
-                <img src="" alt="Article 3">
-                <div class="button">Ajouter au panier</div>
-            </div>
+        </section>
+        <section class="whoarewe" id="whoarewe">
+            <h1>Qui sommes-nous ?</h1>
+            <p>Nous sommes des étudiants en première année de Génie Mécanique et Productique en BUT. Dans le cadre de notre formation, nous avons inventé ce subtil TGVdrinker, cet outil permettant de servir vos shots de TGV de façon simplistique !</p>
         </section>
     </main>
+    <footer>
+        <h2>L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</h2>
+    </footer>
+    <div class="notification valid">
+        <img src="images/valid.png" alt="icon valid" class="icon valid">
+        L'article a bien été ajouté au panier !
+    </div>
+    <div class="notification error">
+        <img src="images/error.png" alt="icon error" class="icon error">
+        L'article n'a pas pu être ajouté au panier.
+    </div>
 </body>
 <script src="index.js"></script>
 </html>
